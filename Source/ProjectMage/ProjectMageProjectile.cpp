@@ -43,11 +43,11 @@ void AProjectMageProjectile::OnHit(AActor* OtherActor, UPrimitiveComponent* Othe
 		Destroy();
 	}
 
-	if ((OtherActor != NULL) && (OtherActor != this) && (OtherActor->IsA(APlayerCharacter::StaticClass())))
+	if ((OtherActor != NULL) && (OtherActor != this) && (OtherActor->IsA(APlayerCharacter::StaticClass())) && (Instigator != OtherActor))
 	{
-		Destroy();
 		APlayerCharacter* Character = Cast<APlayerCharacter>(OtherActor);
-		Character->SetHitpoints(Character->Hitpoints - 1.0f);
-		UE_LOG(LogTemp, Warning, TEXT("Hit character %d"), Character->UUID);
+		Character->SetHitpoints(Character->Hitpoints - 10.0f);
+		UE_LOG(LogTemp, Warning, TEXT("Hit character"));
+		Destroy();
 	}
 }

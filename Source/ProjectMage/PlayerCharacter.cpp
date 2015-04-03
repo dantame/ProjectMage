@@ -77,7 +77,10 @@ void APlayerCharacter::ClientOnFire()
 		if (World != NULL)
 		{
 			// spawn the projectile at the muzzle
-			World->SpawnActor<AProjectMageProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
+			FActorSpawnParameters SpawnParams;
+			SpawnParams.Instigator = this;
+			SpawnParams.Owner = this;
+			World->SpawnActor<AProjectMageProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, SpawnParams);
 		}
 	}
 
@@ -97,7 +100,6 @@ void APlayerCharacter::ClientOnFire()
 			AnimInstance->Montage_Play(FireAnimation, 1.f);
 		}
 	}
-
 
 	if (Role < ROLE_Authority)
 	{
