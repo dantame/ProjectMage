@@ -32,7 +32,7 @@ AProjectMageCharacter::AProjectMageCharacter(const FObjectInitializer& ObjectIni
 
 	// Create a mesh component that will be used when being viewed from a '1st person' view (when controlling this pawn)
 	Mesh1P = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharacterMesh1P"));
-	Mesh1P->SetOnlyOwnerSee(true);			// only the owning player will see this mesh
+	Mesh1P->SetOnlyOwnerSee(false);			// only the owning player will see this mesh
 	Mesh1P->AttachParent = FirstPersonCameraComponent;
 	Mesh1P->RelativeLocation = FVector(0.f, 0.f, -150.f);
 	Mesh1P->bCastDynamicShadow = false;

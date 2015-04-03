@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{196FF95D-4BA3-4C59-9E98-8D731F2E4838}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Games", "Games", "{69FEDC67-83CC-4026-B0C7-3C0CBBBF48B4}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProjectMage", "Intermediate\ProjectFiles\ProjectMage.vcxproj", "{227EE17C-2050-4932-9F85-79DD9E2E752C}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UE4", "Intermediate\ProjectFiles\UE4.vcxproj", "{70797625-8A53-4650-8E6C-13F71C87C71E}"
 EndProject
@@ -30,12 +30,17 @@ Global
 		{227EE17C-2050-4932-9F85-79DD9E2E752C}.Development|Windows.Build.0 = Development_Game|x64
 		{227EE17C-2050-4932-9F85-79DD9E2E752C}.Shipping|Windows.ActiveCfg = Shipping_Game|Win32
 		{227EE17C-2050-4932-9F85-79DD9E2E752C}.Shipping|Windows.Build.0 = Shipping_Game|Win32
+		{70797625-8A53-4650-8E6C-13F71C87C71E}.DebugGame Editor|Windows.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{70797625-8A53-4650-8E6C-13F71C87C71E}.DebugGame|Windows.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{70797625-8A53-4650-8E6C-13F71C87C71E}.Development Editor|Windows.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{70797625-8A53-4650-8E6C-13F71C87C71E}.Development|Windows.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{70797625-8A53-4650-8E6C-13F71C87C71E}.Shipping|Windows.ActiveCfg = BuiltWithUnrealBuildTool|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{70797625-8A53-4650-8E6C-13F71C87C71E} = {196FF95D-4BA3-4C59-9E98-8D731F2E4838}
 		{227EE17C-2050-4932-9F85-79DD9E2E752C} = {69FEDC67-83CC-4026-B0C7-3C0CBBBF48B4}
+		{70797625-8A53-4650-8E6C-13F71C87C71E} = {196FF95D-4BA3-4C59-9E98-8D731F2E4838}
 	EndGlobalSection
 EndGlobal
