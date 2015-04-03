@@ -14,14 +14,12 @@ class AProjectMageCharacter : public ACharacter
 public:
 	AProjectMageCharacter(const FObjectInitializer& ObjectInitializer);
 
-	int UUID;
-
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseTurnRate;
 
 	UPROPERTY(ReplicatedUsing = OnHitpointsReplicated)
-	float Hitpoints = 100.0f;
+	float Hitpoints;
 
 	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)

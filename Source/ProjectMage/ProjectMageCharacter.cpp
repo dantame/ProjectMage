@@ -25,17 +25,17 @@ AProjectMageCharacter::AProjectMageCharacter(const FObjectInitializer& ObjectIni
 	TextRender->SetIsReplicated(true);
 	TextRender->AddLocalOffset(FVector(0.0, 25.0, 110.0), true);
 	TextRender->SetText(FString::SanitizeFloat(Hitpoints));
-
-	UUID = FMath::RandRange(0, 100);
 }
 
 void AProjectMageCharacter::SetHitpoints(float hp)
 {
-	Hitpoints = hp;
-
 	if (Role < ROLE_Authority)
 	{
 		ServerSetHitpoints(hp);
+	}
+	else
+	{
+		Hitpoints = hp;
 	}
 }
 
