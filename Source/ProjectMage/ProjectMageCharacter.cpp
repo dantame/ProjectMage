@@ -2,6 +2,7 @@
 
 #include "ProjectMage.h"
 #include "ProjectMageCharacter.h"
+#include "UnrealNetwork.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 
@@ -17,6 +18,48 @@ AProjectMageCharacter::AProjectMageCharacter(const FObjectInitializer& ObjectIni
 	// set our turn rates for input
 	BaseTurnRate = 45.f;
 	BaseLookUpRate = 45.f;
+
+	TextRender = ObjectInitializer.CreateDefaultSubobject<UTextRenderComponent>(this, TEXT("HitpointsText"));
+	TextRender->AttachTo(RootComponent);
+	TextRender->SetNetAddressable();
+	TextRender->SetIsReplicated(true);
+	TextRender->AddLocalOffset(FVector(0.0, 25.0, 110.0), true);
+	TextRender->SetText(FString::SanitizeFloat(Hitpoints));
+
+	UUID = FMath::RandRange(0, 100);
+}
+
+void AProjectMageCharacter::SetHitpoints(float hp)
+{
+	Hitpoints = hp;
+
+	if (Role < ROLE_Authority)
+	{
+		ServerSetHitpoints(hp);
+	}
+}
+
+bool AProjectMageCharacter::ServerSetHitpoints_Validate(float hp)
+{
+	return true;
+}
+
+void AProjectMageCharacter::ServerSetHitpoints_Implementation(float hp)
+{
+	SetHitpoints(hp);
+}
+
+void AProjectMageCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AProjectMageCharacter, Hitpoints);
+}
+
+void AProjectMageCharacter::OnHitpointsReplicated()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Hitpoints replicated %f"), Hitpoints);
+	TextRender->SetText(FString::SanitizeFloat(Hitpoints));
 }
 
 void AProjectMageCharacter::MoveForward(float Value)

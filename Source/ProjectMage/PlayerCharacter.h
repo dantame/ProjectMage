@@ -43,6 +43,12 @@ public:
 protected:
 	/** Fires a projectile. */
 	void OnFire();
+	void ClientOnFire();
+
+	UFUNCTION(reliable, server, WithValidation)
+	void ServerOnFire();
+	virtual void ServerOnFire_Implementation();
+	virtual bool ServerOnFire_Validate();
 
 	struct TouchData
 	{

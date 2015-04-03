@@ -11,6 +11,9 @@ AProjectMageHUD::AProjectMageHUD(const FObjectInitializer& ObjectInitializer) : 
 	// Set the crosshair texture
 	static ConstructorHelpers::FObjectFinder<UTexture2D> CrosshiarTexObj(TEXT("/Game/FirstPerson/Textures/FirstPersonCrosshair"));
 	CrosshairTex = CrosshiarTexObj.Object;
+	// Set the default font
+	static ConstructorHelpers::FObjectFinder<UFont> DefaultFontObj(TEXT("/Game/FirstPerson/Textures/DefaultFont"));
+	DefaultFont = DefaultFontObj.Object;
 }
 
 
@@ -31,5 +34,9 @@ void AProjectMageHUD::DrawHUD()
 	FCanvasTileItem TileItem( CrosshairDrawPosition, CrosshairTex->Resource, FLinearColor::White);
 	TileItem.BlendMode = SE_BLEND_Translucent;
 	Canvas->DrawItem( TileItem );
+
+	FCanvasTextItem Text(FVector2D(Center.X, Center.Y - 200), FText::FromString("Test"), DefaultFont, FLinearColor::White);
+
+	//Canvas->DrawItem(Text);
 }
 

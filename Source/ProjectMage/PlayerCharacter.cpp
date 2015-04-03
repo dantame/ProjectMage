@@ -61,6 +61,11 @@ void APlayerCharacter::SetupPlayerInputComponent(class UInputComponent* InputCom
 
 void APlayerCharacter::OnFire()
 {
+	ClientOnFire();
+}
+
+void APlayerCharacter::ClientOnFire()
+{
 	// try and fire a projectile
 	if (ProjectileClass != NULL)
 	{
@@ -93,7 +98,24 @@ void APlayerCharacter::OnFire()
 		}
 	}
 
+
+	if (Role < ROLE_Authority)
+	{
+		ServerOnFire();
+	}
 }
+
+void APlayerCharacter::ServerOnFire_Implementation() 
+{
+	UE_LOG(LogTemp, Warning, TEXT("SERVER ON FIRE"));
+	ClientOnFire();
+}
+
+bool APlayerCharacter::ServerOnFire_Validate()
+{
+	return true;
+}
+
 
 void APlayerCharacter::BeginTouch(const ETouchIndex::Type FingerIndex, const FVector Location)
 {

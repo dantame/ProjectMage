@@ -3,6 +3,7 @@
 #include "ProjectMage.h"
 #include "ProjectMageProjectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "PlayerCharacter.h"
 
 AProjectMageProjectile::AProjectMageProjectile(const FObjectInitializer& ObjectInitializer) 
 	: Super(ObjectInitializer)
@@ -40,5 +41,13 @@ void AProjectMageProjectile::OnHit(AActor* OtherActor, UPrimitiveComponent* Othe
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
 
 		Destroy();
+	}
+
+	if ((OtherActor != NULL) && (OtherActor != this) && (OtherActor->IsA(APlayerCharacter::StaticClass())))
+	{
+		Destroy();
+		APlayerCharacter* Character = Cast<APlayerCharacter>(OtherActor);
+		Character->SetHitpoints(Character->Hitpoints - 1.0f);
+		UE_LOG(LogTemp, Warning, TEXT("Hit character %d"), Character->UUID);
 	}
 }
