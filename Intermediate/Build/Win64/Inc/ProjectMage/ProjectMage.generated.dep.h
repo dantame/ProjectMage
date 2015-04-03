@@ -8,6 +8,9 @@
 #ifndef PROJECTMAGE_ProjectMageCharacter_generated_h
 	#include "ProjectMageCharacter.h"
 #endif
+#ifndef PROJECTMAGE_PlayerCharacter_generated_h
+	#include "PlayerCharacter.h"
+#endif
 #ifndef PROJECTMAGE_ProjectMageGameMode_generated_h
 	#include "ProjectMageGameMode.h"
 #endif

@@ -11,7 +11,11 @@ void EmptyLinkFunctionForGeneratedCodeProjectMage() {}
 	void AProjectMageCharacter::StaticRegisterNativesAProjectMageCharacter()
 	{
 	}
-	IMPLEMENT_CLASS(AProjectMageCharacter, 2552527706);
+	IMPLEMENT_CLASS(AProjectMageCharacter, 3448534800);
+	void APlayerCharacter::StaticRegisterNativesAPlayerCharacter()
+	{
+	}
+	IMPLEMENT_CLASS(APlayerCharacter, 4190247647);
 	void AProjectMageGameMode::StaticRegisterNativesAProjectMageGameMode()
 	{
 	}
@@ -44,6 +48,8 @@ void EmptyLinkFunctionForGeneratedCodeProjectMage() {}
 
 	PROJECTMAGE_API class UClass* Z_Construct_UClass_AProjectMageCharacter_NoRegister();
 	PROJECTMAGE_API class UClass* Z_Construct_UClass_AProjectMageCharacter();
+	PROJECTMAGE_API class UClass* Z_Construct_UClass_APlayerCharacter_NoRegister();
+	PROJECTMAGE_API class UClass* Z_Construct_UClass_APlayerCharacter();
 	PROJECTMAGE_API class UClass* Z_Construct_UClass_AProjectMageGameMode_NoRegister();
 	PROJECTMAGE_API class UClass* Z_Construct_UClass_AProjectMageGameMode();
 	PROJECTMAGE_API class UClass* Z_Construct_UClass_AProjectMageHUD_NoRegister();
@@ -70,14 +76,8 @@ void EmptyLinkFunctionForGeneratedCodeProjectMage() {}
 				OuterClass->ClassFlags |= 0x20800080;
 
 
-				UProperty* NewProp_FireAnimation = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FireAnimation"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(FireAnimation, AProjectMageCharacter), 0x0000000000000005, Z_Construct_UClass_UAnimMontage_NoRegister());
-				UProperty* NewProp_FireSound = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FireSound"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(FireSound, AProjectMageCharacter), 0x0000000000000005, Z_Construct_UClass_USoundBase_NoRegister());
-				UProperty* NewProp_ProjectileClass = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("ProjectileClass"), RF_Public|RF_Transient|RF_Native) UClassProperty(CPP_PROPERTY_BASE(ProjectileClass, AProjectMageCharacter), 0x0000000000010001, Z_Construct_UClass_AProjectMageProjectile_NoRegister());
-				UProperty* NewProp_GunOffset = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("GunOffset"), RF_Public|RF_Transient|RF_Native) UStructProperty(CPP_PROPERTY_BASE(GunOffset, AProjectMageCharacter), 0x0000000000000005, Z_Construct_UScriptStruct_UObject_FVector());
 				UProperty* NewProp_BaseLookUpRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("BaseLookUpRate"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(BaseLookUpRate, AProjectMageCharacter), 0x0000000000020015);
 				UProperty* NewProp_BaseTurnRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("BaseTurnRate"), RF_Public|RF_Transient|RF_Native) UFloatProperty(CPP_PROPERTY_BASE(BaseTurnRate, AProjectMageCharacter), 0x0000000000020015);
-				UProperty* NewProp_FirstPersonCameraComponent = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FirstPersonCameraComponent"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(FirstPersonCameraComponent, AProjectMageCharacter), 0x00000000000a001d, Z_Construct_UClass_UCameraComponent_NoRegister());
-				UProperty* NewProp_Mesh1P = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("Mesh1P"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(Mesh1P, AProjectMageCharacter), 0x00000000000b0009, Z_Construct_UClass_USkeletalMeshComponent_NoRegister());
 				OuterClass->ClassConfigName = FName(TEXT("Game"));
 				OuterClass->StaticLink();
 #if WITH_METADATA
@@ -85,33 +85,12 @@ void EmptyLinkFunctionForGeneratedCodeProjectMage() {}
 				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Navigation Pawn|Character|InternalEvents"));
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("ProjectMageCharacter.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("ProjectMageCharacter.h"));
-				MetaData->SetValue(NewProp_FireAnimation, TEXT("Category"), TEXT("Gameplay"));
-				MetaData->SetValue(NewProp_FireAnimation, TEXT("ModuleRelativePath"), TEXT("ProjectMageCharacter.h"));
-				MetaData->SetValue(NewProp_FireAnimation, TEXT("ToolTip"), TEXT("AnimMontage to play each time we fire"));
-				MetaData->SetValue(NewProp_FireSound, TEXT("Category"), TEXT("Gameplay"));
-				MetaData->SetValue(NewProp_FireSound, TEXT("ModuleRelativePath"), TEXT("ProjectMageCharacter.h"));
-				MetaData->SetValue(NewProp_FireSound, TEXT("ToolTip"), TEXT("Sound to play each time we fire"));
-				MetaData->SetValue(NewProp_ProjectileClass, TEXT("Category"), TEXT("Projectile"));
-				MetaData->SetValue(NewProp_ProjectileClass, TEXT("ModuleRelativePath"), TEXT("ProjectMageCharacter.h"));
-				MetaData->SetValue(NewProp_ProjectileClass, TEXT("ToolTip"), TEXT("Projectile class to spawn"));
-				MetaData->SetValue(NewProp_GunOffset, TEXT("Category"), TEXT("Gameplay"));
-				MetaData->SetValue(NewProp_GunOffset, TEXT("ModuleRelativePath"), TEXT("ProjectMageCharacter.h"));
-				MetaData->SetValue(NewProp_GunOffset, TEXT("ToolTip"), TEXT("Gun muzzle's offset from the characters location"));
 				MetaData->SetValue(NewProp_BaseLookUpRate, TEXT("Category"), TEXT("Camera"));
 				MetaData->SetValue(NewProp_BaseLookUpRate, TEXT("ModuleRelativePath"), TEXT("ProjectMageCharacter.h"));
 				MetaData->SetValue(NewProp_BaseLookUpRate, TEXT("ToolTip"), TEXT("Base look up/down rate, in deg/sec. Other scaling may affect final rate."));
 				MetaData->SetValue(NewProp_BaseTurnRate, TEXT("Category"), TEXT("Camera"));
 				MetaData->SetValue(NewProp_BaseTurnRate, TEXT("ModuleRelativePath"), TEXT("ProjectMageCharacter.h"));
 				MetaData->SetValue(NewProp_BaseTurnRate, TEXT("ToolTip"), TEXT("Base turn rate, in deg/sec. Other scaling may affect final turn rate."));
-				MetaData->SetValue(NewProp_FirstPersonCameraComponent, TEXT("AllowPrivateAccess"), TEXT("true"));
-				MetaData->SetValue(NewProp_FirstPersonCameraComponent, TEXT("Category"), TEXT("Camera"));
-				MetaData->SetValue(NewProp_FirstPersonCameraComponent, TEXT("EditInline"), TEXT("true"));
-				MetaData->SetValue(NewProp_FirstPersonCameraComponent, TEXT("ModuleRelativePath"), TEXT("ProjectMageCharacter.h"));
-				MetaData->SetValue(NewProp_FirstPersonCameraComponent, TEXT("ToolTip"), TEXT("First person camera"));
-				MetaData->SetValue(NewProp_Mesh1P, TEXT("Category"), TEXT("Mesh"));
-				MetaData->SetValue(NewProp_Mesh1P, TEXT("EditInline"), TEXT("true"));
-				MetaData->SetValue(NewProp_Mesh1P, TEXT("ModuleRelativePath"), TEXT("ProjectMageCharacter.h"));
-				MetaData->SetValue(NewProp_Mesh1P, TEXT("ToolTip"), TEXT("Pawn mesh: 1st person view (arms; seen only by self)"));
 #endif
 			}
 		}
@@ -119,6 +98,64 @@ void EmptyLinkFunctionForGeneratedCodeProjectMage() {}
 		return OuterClass;
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AProjectMageCharacter(Z_Construct_UClass_AProjectMageCharacter, TEXT("AProjectMageCharacter"));
+	UClass* Z_Construct_UClass_APlayerCharacter_NoRegister()
+	{
+		return APlayerCharacter::StaticClass();
+	}
+	UClass* Z_Construct_UClass_APlayerCharacter()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_AProjectMageCharacter();
+			Z_Construct_UPackage_ProjectMage();
+			OuterClass = APlayerCharacter::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+
+				UProperty* NewProp_FireAnimation = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FireAnimation"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(FireAnimation, APlayerCharacter), 0x0000000000000005, Z_Construct_UClass_UAnimMontage_NoRegister());
+				UProperty* NewProp_FireSound = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FireSound"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(FireSound, APlayerCharacter), 0x0000000000000005, Z_Construct_UClass_USoundBase_NoRegister());
+				UProperty* NewProp_ProjectileClass = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("ProjectileClass"), RF_Public|RF_Transient|RF_Native) UClassProperty(CPP_PROPERTY_BASE(ProjectileClass, APlayerCharacter), 0x0000000000010001, Z_Construct_UClass_AProjectMageProjectile_NoRegister());
+				UProperty* NewProp_GunOffset = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("GunOffset"), RF_Public|RF_Transient|RF_Native) UStructProperty(CPP_PROPERTY_BASE(GunOffset, APlayerCharacter), 0x0000000000000005, Z_Construct_UScriptStruct_UObject_FVector());
+				UProperty* NewProp_FirstPersonCameraComponent = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FirstPersonCameraComponent"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(FirstPersonCameraComponent, APlayerCharacter), 0x00000000000a001d, Z_Construct_UClass_UCameraComponent_NoRegister());
+				UProperty* NewProp_Mesh1P = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("Mesh1P"), RF_Public|RF_Transient|RF_Native) UObjectProperty(CPP_PROPERTY_BASE(Mesh1P, APlayerCharacter), 0x00000000000b0009, Z_Construct_UClass_USkeletalMeshComponent_NoRegister());
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Navigation Pawn|Character|InternalEvents"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("PlayerCharacter.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("PlayerCharacter.h"));
+				MetaData->SetValue(NewProp_FireAnimation, TEXT("Category"), TEXT("Gameplay"));
+				MetaData->SetValue(NewProp_FireAnimation, TEXT("ModuleRelativePath"), TEXT("PlayerCharacter.h"));
+				MetaData->SetValue(NewProp_FireAnimation, TEXT("ToolTip"), TEXT("AnimMontage to play each time we fire"));
+				MetaData->SetValue(NewProp_FireSound, TEXT("Category"), TEXT("Gameplay"));
+				MetaData->SetValue(NewProp_FireSound, TEXT("ModuleRelativePath"), TEXT("PlayerCharacter.h"));
+				MetaData->SetValue(NewProp_FireSound, TEXT("ToolTip"), TEXT("Sound to play each time we fire"));
+				MetaData->SetValue(NewProp_ProjectileClass, TEXT("Category"), TEXT("Projectile"));
+				MetaData->SetValue(NewProp_ProjectileClass, TEXT("ModuleRelativePath"), TEXT("PlayerCharacter.h"));
+				MetaData->SetValue(NewProp_ProjectileClass, TEXT("ToolTip"), TEXT("Projectile class to spawn"));
+				MetaData->SetValue(NewProp_GunOffset, TEXT("Category"), TEXT("Gameplay"));
+				MetaData->SetValue(NewProp_GunOffset, TEXT("ModuleRelativePath"), TEXT("PlayerCharacter.h"));
+				MetaData->SetValue(NewProp_GunOffset, TEXT("ToolTip"), TEXT("Gun muzzle's offset from the characters location"));
+				MetaData->SetValue(NewProp_FirstPersonCameraComponent, TEXT("AllowPrivateAccess"), TEXT("true"));
+				MetaData->SetValue(NewProp_FirstPersonCameraComponent, TEXT("Category"), TEXT("Camera"));
+				MetaData->SetValue(NewProp_FirstPersonCameraComponent, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_FirstPersonCameraComponent, TEXT("ModuleRelativePath"), TEXT("PlayerCharacter.h"));
+				MetaData->SetValue(NewProp_FirstPersonCameraComponent, TEXT("ToolTip"), TEXT("First person camera"));
+				MetaData->SetValue(NewProp_Mesh1P, TEXT("Category"), TEXT("Mesh"));
+				MetaData->SetValue(NewProp_Mesh1P, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_Mesh1P, TEXT("ModuleRelativePath"), TEXT("PlayerCharacter.h"));
+				MetaData->SetValue(NewProp_Mesh1P, TEXT("ToolTip"), TEXT("Pawn mesh: 1st person view (arms; seen only by self)"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_APlayerCharacter(Z_Construct_UClass_APlayerCharacter, TEXT("APlayerCharacter"));
 	UClass* Z_Construct_UClass_AProjectMageGameMode_NoRegister()
 	{
 		return AProjectMageGameMode::StaticClass();
@@ -270,8 +307,8 @@ void EmptyLinkFunctionForGeneratedCodeProjectMage() {}
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/ProjectMage")), false, false));
 			ReturnPackage->PackageFlags |= PKG_CompiledIn | 0x00000000;
 			FGuid Guid;
-			Guid.A = 0x44D4F1E6;
-			Guid.B = 0x6B32748F;
+			Guid.A = 0xB68581BA;
+			Guid.B = 0x49340179;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);
